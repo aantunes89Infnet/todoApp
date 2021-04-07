@@ -47,7 +47,10 @@ class LoginFragment : Fragment() {
             val email = et_login_email.text.toString()
             val password = et_login_password.text.toString()
 
-            loginViewModel.tryToLogin(email, password)
+            if(!email.isNullOrBlank() && !password.isNullOrBlank()) {
+                loginViewModel.tryToLogin(email, password)
+            }
+
         }
     }
 

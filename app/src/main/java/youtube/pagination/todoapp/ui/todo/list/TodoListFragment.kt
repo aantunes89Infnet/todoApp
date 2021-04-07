@@ -8,10 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.auth.User
 import kotlinx.android.synthetic.main.todo_list_fragment.*
 import youtube.pagination.todoapp.R
 import youtube.pagination.todoapp.adapter.RecyclerTodoList
 import youtube.pagination.todoapp.database.TodoUtils
+import youtube.pagination.todoapp.database.UserFireBaseDao
 
 class TodoListFragment : Fragment() {
 
@@ -42,6 +44,11 @@ class TodoListFragment : Fragment() {
 
         new_todo_btn.setOnClickListener {
             findNavController().navigate(R.id.todoFormFragment)
+        }
+
+        logout_btn.setOnClickListener {
+            UserFireBaseDao.logout()
+            findNavController().navigate(R.id.loginFragment)
         }
     }
 
