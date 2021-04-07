@@ -1,6 +1,7 @@
 package youtube.pagination.todoapp.ui.user.login
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,10 +23,12 @@ class LoginFragment : Fragment() {
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
         loginViewModel.let {
-//            it.status.observe(viewLifecycleOwner, { status ->
-//                if (status) {
-//                }
-//            })
+            it.status.observe(viewLifecycleOwner, { status ->
+                if (status) {
+                    Log.i("haloooo", "halooooo")
+                    findNavController().navigate(R.id.todoListFragment)
+                }
+            })
 
             it.msg.observe(viewLifecycleOwner, { msg -> showToaster(msg) })
         }
